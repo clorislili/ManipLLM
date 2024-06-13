@@ -80,12 +80,14 @@ for item in tqdm(folder_names):
                 top_indices_neg2 = np.hstack((selected_row_indices_neg, selected_col_indices_neg))
                 top_indices_neg2_gt = np.zeros(top_indices_neg2.shape[0])
             else:
-                continue
-                # indices_neg = np.random.choice(len(row_indices_neg), size=NUM_OF_POINTS, replace=False)
-                # selected_row_indices_neg = row_indices_neg[indices_neg].reshape(-1, 1)
-                # selected_col_indices_neg = col_indices_neg[indices_neg].reshape(-1, 1)
-                # top_indices_neg2 = np.hstack((selected_row_indices_neg, selected_col_indices_neg))
-                # top_indices_neg2_gt = np.zeros(top_indices_neg2.shape[0])
+                try:
+                    indices_neg = np.random.choice(len(row_indices_neg), size=NUM_OF_POINTS, replace=False)
+                    selected_row_indices_neg = row_indices_neg[indices_neg].reshape(-1, 1)
+                    selected_col_indices_neg = col_indices_neg[indices_neg].reshape(-1, 1)
+                    top_indices_neg2 = np.hstack((selected_row_indices_neg, selected_col_indices_neg))
+                    top_indices_neg2_gt = np.zeros(top_indices_neg2.shape[0])
+                except:
+                    continue
             
             
             indices_pos = np.random.choice(len(row_indices_pos), size=NUM_OF_POINTS, replace=False)
