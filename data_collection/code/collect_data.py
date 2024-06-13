@@ -74,8 +74,8 @@ def generate_aff(object_link_ids,env,cam,cam_XYZA_world):
         elif str(action_type).split('.')[-1] == 'REVOLUTE':
             out_info['action_type_{}'.format(str(i))] = 'REVOLUTE'
             indices_of_ones = np.where(part_movable_link_mask == 1) 
-            sampled_indices = np.random.choice(np.arange(len(indices_of_ones[0])), size=len(indices_of_ones[0]), replace=False)  # 打乱这些像素的顺序
-            sampled_points = np.vstack((indices_of_ones[0][sampled_indices], indices_of_ones[1][sampled_indices])).T  # 按照新循序把点排为 (X, 2) 的数组
+            sampled_indices = np.random.choice(np.arange(len(indices_of_ones[0])), size=len(indices_of_ones[0]), replace=False)  
+            sampled_points = np.vstack((indices_of_ones[0][sampled_indices], indices_of_ones[1][sampled_indices])).T  
             black_aff = np.zeros((336, 336))
             
 
@@ -93,23 +93,20 @@ def generate_aff(object_link_ids,env,cam,cam_XYZA_world):
                 max_value = np.max(non_zero_values)
                 normalized_flow = (black_aff - min_value) / (max_value - min_value)
             else:
-                # 如果 non_zero_values 为空，则设置 normalized_flow 为零数组
+               
                 normalized_flow = np.zeros_like(black_aff)
 
-            # 应用可移动链接掩码
+            
             normalized_flow *= (part_movable_link_mask > 0)
 
-            # 转换为 uint8 类型
+            
             aff_gt = (normalized_flow * 255).astype(np.uint8)
 
             aff_gt_all.append(aff_gt)
     return aff_gt_all
 
 def rotate_point_around_axis(point, axis_point, axis_direct):
-    '''
-    将点 point 沿着轴 axis_point 和 axis_direct 旋转
-    返回旋转后的点 point_rotated 和流形范数 flow_norm
-    '''
+    
     v1, v2, v3 = point
     c1, c2, c3 = axis_point
     d1, d2, d3 = axis_direct
@@ -307,37 +304,24 @@ def add_noise(vector, noise_level=0.01):
     noise = np.random.normal(-noise_level, noise_level, vector.shape)
     return vector + noise
 
-# 确保向量正交并规范化
 def orthogonalize_and_normalize(v1, v2):
     v1 /= np.linalg.norm(v1)
     v2 -= np.dot(v2, v1) * v1
     v2 /= np.linalg.norm(v2)
     return v1, v2
 
-# 初始化up向量并进行单位化
+
 up = np.array(action_direction_world, dtype=np.float32)
 up /= np.linalg.norm(up)
-
-# 添加噪声
 up = add_noise(up)
 up /= np.linalg.norm(up)
-
-# 初始化forward向量并进行单位化
 forward = np.random.randn(3).astype(np.float32)
 forward /= np.linalg.norm(forward)
-
-# 确保up和forward之间正交
 up, forward = orthogonalize_and_normalize(up, forward)
-
-# 计算left向量
 left = np.cross(up, forward)
 left /= np.linalg.norm(left)
-
-# 确保forward向量是正交的
 forward = np.cross(left, up)
 forward /= np.linalg.norm(forward)
-
-# 确保left向量是正交的
 left = np.cross(up, forward)
 left /= np.linalg.norm(left)
 
