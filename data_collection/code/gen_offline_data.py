@@ -36,7 +36,7 @@ with open(conf.ins_cnt_fn, 'r') as fin:
         cat, _, freq = l.rstrip().split()
         #hard categories are harder to collect success samples, therefore, increase the frequency of interacting with these categories to keep the category balance
         if cat in hard_train_cat: 
-            freq *= 2.5
+            freq *= 2
             cat2freq[cat] = freq
         elif cat in easy_train_cat:
             freq = int(float(freq) / 1.4)
