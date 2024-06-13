@@ -9,9 +9,9 @@ The official codebase for ManipLLM:  Embodied Multimodal Large Language Model fo
   [Test data downloading](URL) ....
   
   
-  The downloaded 'train_data' and 'test_data' folder should be placed under /ManipLLM/data_collection/data
+  The downloaded 'train_data' and 'test_data' folder should be placed under /ManipLLM/data_collection/data.
 
-- Collect data by your own:
+- Collect data by your own: Download [partnet mobility](https://sapien.ucsd.edu/downloads) urdf from its official website and place under ./ManipLLM/data_collection/asset.
   ```bash
   cd ./ManipLLM/data_collection/code
   
@@ -36,7 +36,7 @@ The official codebase for ManipLLM:  Embodied Multimodal Large Language Model fo
   
   bash finetune.sh
 
-## Model Training
+## Model Testing
 The public code only infers on the final prompt without chain-of-thought, predicting the pose directly. 
 
 It will first use the model to infer on all the test samples, and then interact with object in the simulator (SAPIEN).
