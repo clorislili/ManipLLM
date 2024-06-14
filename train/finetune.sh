@@ -1,6 +1,6 @@
 #step1: generate training json
-# JSON_DIR='./data/train_json'
-# python ./data/create_dataset_aff.py --folder_dir ../data_collection/data/train_data --output_dir "$JSON_DIR" --num_point 20
+JSON_DIR='./data/train_json'
+python ./data/create_dataset_aff.py --folder_dir ../data_collection/data/train_data --output_dir "$JSON_DIR" --num_point 20
 
 #step2: train model
 OUTPUT_DIR='./exp/train_ckpts'
