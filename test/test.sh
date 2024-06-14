@@ -1,5 +1,5 @@
 #step1: model inference 
-OUPUT_DIR='./test_result/result_ori'
+OUPUT_DIR='./test_results/result_ori'
 CUDA_VISIBLE_DEVICES=0 python test_llama.py \
   --llama_dir ./ckpts/llama_model_weights \
   --adapter_dir ../train/exp/checkpoint-9.pth \
