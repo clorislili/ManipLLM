@@ -61,7 +61,7 @@ The public code only infers on the final prompt without chain-of-thought, predic
 
 Remember to add the checkpoints of [CLIP](https://disk.pku.edu.cn/link/AA93FF7210CF0D4F428850C0F520C81453), [LLaMa](same with the process in training), and [LLaMa-Adapter](https://disk.pku.edu.cn/link/AA682A19DB7FDA4028B112449D24BBC308) under /ManipLLM/test/ckpts as well.
 
-Place the released [ManipLLM](url) checkpoint under /ManipLLM/test/exp or use your own trained checkpoint.
+Place the released [ManipLLM](https://disk.pku.edu.cn/link/AAD623030E00724891BA258A8575D434C8) checkpoint under /ManipLLM/test/exp or use your own trained checkpoint.
 
 The testing requires the server to has a least 40g memory. This command will first use the model to infer on all the test samples, and then interact with object in the simulator (SAPIEN).
   
