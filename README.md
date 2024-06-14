@@ -20,6 +20,15 @@ Follow the requirement.txt to setup up a new conda env and install necessary pac
 
 - Collect data by your own: Download [partnet mobility](https://sapien.ucsd.edu/downloads) urdf from its official website and place under ./ManipLLM/data_collection/asset.
   ```bash
+  ./asset/original_sapien_dataset
+    ├── 148
+    |   └── mobility.urdf
+    ├── 149
+    |   └── mobility.urdf
+    ├── ...
+    │   ...
+    └── ...
+  
   cd ./ManipLLM/data_collection/code
   
   bash scripts/run_gen_offline_data.sh
