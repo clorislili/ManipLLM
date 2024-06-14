@@ -39,8 +39,8 @@ class Processgen(object):
         succ_todos = []
         # print(todos)
         for todo in todos:
-            cmd = 'xvfb-run -a python test_one_stick_clean.py --data_dir {} --record_name {} --out_dir {} --no_gui' \
-                    .format(todo[0], todo[1], todo[2])
+            cmd = 'xvfb-run -a python test_one_stick_clean.py --data_dir {} --record_name {} --out_dir {} --no_gui --use_mask {}' \
+                    .format(todo[0], todo[1], todo[2], todo[-1])
             folder_name_withjob = os.path.join(todo[2],todo[1])
             # print(cmd)
             # exit()

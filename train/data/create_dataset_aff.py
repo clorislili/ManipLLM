@@ -34,6 +34,8 @@ for item in tqdm(folder_names):
                 continue
             
             aff_gt_dir = os.path.join(cur_dir, 'aff_gt_all.png')
+            if not os.path.exists(aff_gt_dir):
+                continue
             img_pil = Image.open(os.path.join(cur_dir, 'original_rgb.png'))
             intermask_pil = np.array(Image.open(os.path.join(cur_dir, 'interaction_mask.png')))
             gray_image = ImageOps.grayscale(img_pil)

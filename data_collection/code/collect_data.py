@@ -74,8 +74,8 @@ def generate_aff(object_link_ids,env,cam,cam_XYZA_world):
         elif str(action_type).split('.')[-1] == 'REVOLUTE':
             out_info['action_type_{}'.format(str(i))] = 'REVOLUTE'
             indices_of_ones = np.where(part_movable_link_mask == 1) 
-            sampled_indices = np.random.choice(np.arange(len(indices_of_ones[0])), size=len(indices_of_ones[0]), replace=False)  
-            sampled_points = np.vstack((indices_of_ones[0][sampled_indices], indices_of_ones[1][sampled_indices])).T  
+            sampled_indices = np.random.choice(np.arange(len(indices_of_ones[0])), size=len(indices_of_ones[0]), replace=False)  # 打乱这些像素的顺序
+            sampled_points = np.vstack((indices_of_ones[0][sampled_indices], indices_of_ones[1][sampled_indices])).T  # 按照新循序把点排为 (X, 2) 的数组
             black_aff = np.zeros((336, 336))
             
 
@@ -93,13 +93,10 @@ def generate_aff(object_link_ids,env,cam,cam_XYZA_world):
                 max_value = np.max(non_zero_values)
                 normalized_flow = (black_aff - min_value) / (max_value - min_value)
             else:
-               
                 normalized_flow = np.zeros_like(black_aff)
 
-            
             normalized_flow *= (part_movable_link_mask > 0)
 
-            
             aff_gt = (normalized_flow * 255).astype(np.uint8)
 
             aff_gt_all.append(aff_gt)
@@ -310,18 +307,23 @@ def orthogonalize_and_normalize(v1, v2):
     v2 /= np.linalg.norm(v2)
     return v1, v2
 
-
 up = np.array(action_direction_world, dtype=np.float32)
 up /= np.linalg.norm(up)
+
 up = add_noise(up)
 up /= np.linalg.norm(up)
+
 forward = np.random.randn(3).astype(np.float32)
 forward /= np.linalg.norm(forward)
+
 up, forward = orthogonalize_and_normalize(up, forward)
+
 left = np.cross(up, forward)
 left /= np.linalg.norm(left)
+
 forward = np.cross(left, up)
 forward /= np.linalg.norm(forward)
+
 left = np.cross(up, forward)
 left /= np.linalg.norm(left)
 

@@ -33,7 +33,7 @@ class LLaMA_adapter(nn.Module):
                  query_len=577, query_layer=32, phase="finetune"):
         super().__init__()
         # llama configs
-        with open(os.path.join(llama_ckpt_dir, "params.json"), "r") as f:
+        with open(os.path.join(llama_ckpt_dir, "7B/params.json"), "r") as f:
             params = json.loads(f.read())
         bias_lora = phase == "finetune"
         model_args: ModelArgs = ModelArgs(

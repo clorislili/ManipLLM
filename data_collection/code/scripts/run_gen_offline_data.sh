@@ -3,8 +3,8 @@ python gen_offline_data.py \
   --data_dir ../data/train_data\
   --data_fn ../stats/train_id.txt\
   --primact_types pulling \
-  --num_processes 10 \
-  --num_epochs 200 \
+  --num_processes 40 \
+  --num_epochs 100 \
   --starting_epoch 0 \
   --ins_cnt_fn ../stats/ins_cnt_46cats.txt \
   --mode train 

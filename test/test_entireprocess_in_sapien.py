@@ -9,6 +9,7 @@ parser.add_argument('--no_gui', action='store_true', default=False, help='no_gui
 parser.add_argument('--data_dir', type=str, help='data directory')
 parser.add_argument('--num_processes', type=int, default=40, help='number of CPU cores to use')
 parser.add_argument('--out_dir', type=str, help='outdata directory')
+parser.add_argument('--use_mask', type=str, default=False, help='whether use movable mask')
 conf = parser.parse_args()
 
 if os.path.exists(conf.out_dir):

@@ -32,6 +32,7 @@ parser.add_argument('--no_gui', action='store_true', default=False, help='no_gui
 parser.add_argument('--data_dir', type=str)
 parser.add_argument('--record_name', type=str)
 parser.add_argument('--out_dir', type=str)
+parser.add_argument('--use_mask', type=str, help='whether use movable mask')
 eval_conf = parser.parse_args()
 
 random.seed(0)
@@ -73,7 +74,7 @@ if not eval_conf.no_gui:
 
 
 # load shape
-object_urdf_fn = '/vepfs-cnsh4137610c2f4c/algo/user8/lixiaoqi/xcy/where2act/data/where2act_original_sapien_dataset/%s/mobility.urdf' % shape_id
+object_urdf_fn = '../data_collection/asset/original_sapien_dataset/%s/mobility.urdf' % shape_id
 flog.write('object_urdf_fn: %s\n' % object_urdf_fn)
 object_material = env.get_material(4, 4, 0.01)
 state = replay_data['object_state']
@@ -145,8 +146,9 @@ gt_movable_link_mask = cam.get_movable_link_mask(object_link_ids)
 x, y = result.split('(')[1].split(')')[0].split(', ')
 x = int(x)
 y = int(y)
-if gt_movable_link_mask[x,y] == 0:
-    exit()
+if eval_conf.use_mask == 'True':
+    if gt_movable_link_mask[x,y] == 0:
+        exit()
 
 norm_dir = gt_nor[x,y]
 
@@ -297,7 +299,7 @@ rgb_final_pose, _ = cam.get_observation()
 Image.fromarray((rgb_final_pose*255).astype(np.uint8)).save(os.path.join(out_dir, 'viz_target_pose.png'))
 
 print(success, mani_succ)
-with open(os.path.join(out_dir, 'result2.json'), 'w') as fout:
+with open(os.path.join(out_dir, 'result.json'), 'w') as fout:
     json.dump(out_info, fout)
     print(out_dir)
 flog.close()

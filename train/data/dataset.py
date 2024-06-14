@@ -106,10 +106,10 @@ class FinetuneDataset(Dataset):
                 answer = data_item['aff_gt']
             elif i % 4 == 3:
                 #cat
-                # question = data_item['conversations'][0]['prompt']
-                # answer = answer
-                question = data_item['cat_prompt']
-                answer = data_item['cat_ans']
+                question = data_item['conversations'][0]['prompt']
+                answer = answer
+                # question = data_item['cat_prompt']
+                # answer = data_item['cat_ans']
 
             image = Image.fromarray(np.array(Image.open(filename).convert('RGB'))[start_pixel:start_pixel+336,start_pixel:start_pixel+336,:])
             

@@ -10,7 +10,7 @@ def calculate_succ_ration(data_list_for_cat,conf,out_dir):
             succ_ration_list=[]
             for i in data_list_for_cat[cat]:
                 try:
-                    with open(os.path.join(i, 'result2.json'), 'r') as fin:
+                    with open(os.path.join(i, 'result.json'), 'r') as fin:
                         result_data = json.load(fin)
                         succ_ration_list.append(result_data['mani_succ'])
                 except:
@@ -26,8 +26,8 @@ def calculate_succ_ration(data_list_for_cat,conf,out_dir):
     train_cat = ['Safe', 'Door','Display','Refrigerator' ,'Laptop','Lighter','Microwave','Mouse','Box','TrashCan','KitchenPot','Suitcase','Pliers','StorageFurniture','Remote','Bottle'
     , 'FoldingChair','Toaster','Lamp','Dispenser','Eyeglasses','Pen','Printer','Keyboard','Fan','Knife','Dishwaher']
 
-    count_train = 0
-    count_test = 0
+    count_train = 1e-6
+    count_test = 1e-6
     osum_train = 0
     osum_test = 0
     print(out_info)

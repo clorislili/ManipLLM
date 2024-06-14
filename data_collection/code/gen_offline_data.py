@@ -39,7 +39,7 @@ with open(conf.ins_cnt_fn, 'r') as fin:
             freq *= 2
             cat2freq[cat] = freq
         elif cat in easy_train_cat:
-            freq = int(float(freq) / 1.4)
+            freq = int(float(freq) / 1.2)
             cat2freq[cat] = freq
         cat2freq[cat] = int(freq)
 
