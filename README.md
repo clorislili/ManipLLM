@@ -13,14 +13,7 @@ This repo benefits from [LLama_Adapter](https://github.com/OpenGVLab/LLaMA-Adapt
 
             
 ## Data Collection
-- Download OUR train/test data:
-  
-  [Train data downloading](https://disk.pku.edu.cn/link/AAC241C979556F4FBAB8B1895B2E63E9AA) ....
-  
-  [Test data downloading](https://disk.pku.edu.cn/link/AA103C5B00398E4E4089903CB06AC09D8C) ....
-  
-  
-  The downloaded 'train_data' and 'test_data' folder should be unziped under /ManipLLM/data_collection/data.
+
 
 - Collect data by your own: Download [partnet mobility](https://sapien.ucsd.edu/downloads) urdf from its official website and place under ./ManipLLM/data_collection/asset.
   ```bash
@@ -66,6 +59,13 @@ The public code only infers on the final prompt without chain-of-thought, predic
 Remember to add the checkpoints of [CLIP](https://disk.pku.edu.cn/link/AA93FF7210CF0D4F428850C0F520C81453), [LLaMa](same with the process in training), and [LLaMa-Adapter](https://disk.pku.edu.cn/link/AA682A19DB7FDA4028B112449D24BBC308) under /ManipLLM/test/ckpts as well.
 
 Place the released [ManipLLM](todo) checkpoint under /ManipLLM/test/exp or use your own trained checkpoint.
+
+Download OUR test data:
+  
+  [Test data downloading](https://disk.pku.edu.cn/link/AA103C5B00398E4E4089903CB06AC09D8C) ....
+  
+  
+  The downloaded 'test_data' folder should be unziped under /ManipLLM/data_collection/data.
 
 The testing requires the server to has a least 40g memory. This command will first use the model to infer on all the test samples, and then interact with object in the simulator (SAPIEN).
   
