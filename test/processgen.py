@@ -30,7 +30,7 @@ class Processgen(object):
         if self.is_running:
             printout(self.flog, 'ERROR: cannot add a new job while Processgen is running!')
             exit(1)
-        todo = (conf.data_dir,record_name,conf.out_dir,conf.no_gui)
+        todo = (conf.data_dir,record_name,conf.out_dir,conf.use_mask)
         self.todos.append(todo)
 
     
