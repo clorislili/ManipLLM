@@ -5,7 +5,9 @@ The official codebase for ManipLLM:  Embodied Multimodal Large Language Model fo
 This repo benefits from [LLama_Adapter](https://github.com/OpenGVLab/LLaMA-Adapter) and [Where2act](https://github.com/daerduoCarey/where2act). Thanks for their wonderful works.
 
 ## Setup
-Follow the requirement.txt to setup up a new conda env and install necessary packages.
+conda create --name manipllm python=3.8
+conda activate manipllm
+pip install -r requirements.txt
 
             
 ## Data Collection
