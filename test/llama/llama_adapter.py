@@ -296,10 +296,10 @@ def load(name, llama_dir, device="cuda" if torch.cuda.is_available() else "cpu",
 
     # load llama_adapter weights and model_cfg
     print(f'Loading LLaMA-Adapter from {model_path}')
-    ckpt = torch.load(model_path, map_location='cpu')
+    
 
     model = LLaMA_adapter(
-        llama_ckpt_dir, llama_tokenzier_path,
+        llama_dir, llama_tokenzier_path,
         max_seq_len=max_seq_len, max_batch_size=1,
         clip_model='ViT-L/14@336px',
         v_embed_dim=1024, v_depth=16,
