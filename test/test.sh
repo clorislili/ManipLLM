@@ -9,7 +9,7 @@ CUDA_VISIBLE_DEVICES=0 python test_llama.py \
 
 #step2: test in simulator
 python test_entireprocess_in_sapien.py \
-  --data_dir /vepfs-cnsh4137610c2f4c/algo/user8/lixiaoqi/cloris/ManipLLM0604/data_collection/data/test_data \
+  --data_dir ../data_collection/data/test_data \
   --num_processes 10 \
   --out_dir "$OUPUT_DIR" \
   --no_gui \
