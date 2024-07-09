@@ -295,7 +295,7 @@ def load(name, llama_dir, device="cuda" if torch.cuda.is_available() else "cpu",
     llama_tokenzier_path = os.path.join(llama_dir, 'tokenizer.model')
 
     # load llama_adapter weights and model_cfg
-    print(f'Loading LLaMA-Adapter from {model_path}')
+    print(f'Loading checkpoint from {model_path}')
     
 
     model = LLaMA_adapter(
