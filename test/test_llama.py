@@ -21,7 +21,7 @@ llama_dir = conf.llama_dir
 model, preprocess = llama.load(conf.adapter_dir, llama_dir, device)
 model.to(device)
 model.eval()
-if 'ori' in conf.adapter_dir:
+if '-ori' in conf.adapter_dir:
     prompt = llama.format_prompt('Specify the contact point and orientation of pushing the object.') # though it is called pushing, but the prediction is the same as manipulating. It is just an old version of prompt naming during training
 else:
     prompt = llama.format_prompt('Specify the contact point and gripper direction of manipulating the object.')
