@@ -21,8 +21,10 @@ llama_dir = conf.llama_dir
 model, preprocess = llama.load(conf.adapter_dir, llama_dir, device)
 model.to(device)
 model.eval()
-prompt = llama.format_prompt('Specify the contact point and gripper direction of manipulating the object.')
-# prompt = llama.format_prompt('Specify the contact point and orientation of pushing the object.')
+if 'ori' in conf.adapter_dir:
+    prompt = llama.format_prompt('Specify the contact point and orientation of pushing the object.') # though it is called pushing, but the prediction is the same as manipulating. It is just aboout the naming for prompt during training.
+else:
+    prompt = llama.format_prompt('Specify the contact point and gripper direction of manipulating the object.')
 record_names = os.listdir(conf.data_dir)
 for record_name in tqdm(record_names):
     out_dir  = os.path.join(conf.out_dir,record_name)
