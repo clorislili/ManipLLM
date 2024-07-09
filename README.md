@@ -54,15 +54,15 @@ This command will first generate training dataset and then generate the testing 
   bash finetune.sh
 
 ## Model Testing
-The public code only infers on the final prompt without chain-of-thought, predicting the pose directly. 
+- The public code only infers on the final prompt without chain-of-thought, predicting the pose directly. 
 
-Remember to add the checkpoints of [CLIP](https://disk.pku.edu.cn/link/AA93FF7210CF0D4F428850C0F520C81453), [LLaMa](same with the process in training), and [LLaMa-Adapter](https://disk.pku.edu.cn/link/AA682A19DB7FDA4028B112449D24BBC308) under /ManipLLM/test/ckpts as well.
+- Remember to add the checkpoints of [CLIP](https://disk.pku.edu.cn/link/AA93FF7210CF0D4F428850C0F520C81453), [LLaMa](same with the process in training), and [LLaMa-Adapter](https://disk.pku.edu.cn/link/AA682A19DB7FDA4028B112449D24BBC308) under /ManipLLM/test/ckpts as well.
 
-Download the released [ManipLLM](todo) checkpoint or use your own trained checkpoint. Remember to change the line5 in test.sh accordingly to the dir you placed the ckpts.
+- We release tewo checkpoints: checkpoint-9-ori.pth and checkpoint-9.pth. checkpoint-9-ori is the checkpoint we use for our paper, while checkpoint-9.pth is the model we trained latter. Since there are randomness in data collection, these two models are differ in training data. Note that, the provided testing dataset is different from the ones in paper, so you may result in slightly different results compared with the results in paper. Download the released [checkpoint-9-ori](https://pan.baidu.com/s/1kh_LO7W7TnnrpPzI4khw0Q?pwd=cipc) or [checkpoint-9.pth](https://pan.baidu.com/s/1bwCEBDMe1_iGdfMCtNzvsA?pwd=5g52) or use your own trained checkpoint. The link we provide is baiduyun downloading link. If you need a google drive download link, send your google account via email to xl3062@columbia.edu, then we will share the link with you. Remember to change the line5 in test.sh to the dir you placed the ckpts.
 
-Download OUR [test data](https://disk.pku.edu.cn/link/AA103C5B00398E4E4089903CB06AC09D8C) or collect the test data by your own. The downloaded 'test_data' folder should be unziped under /ManipLLM/data_collection/data. Download [partnet mobility](https://sapien.ucsd.edu/downloads) urdf from its official website and place under /ManipLLM/data_collection/asset.
+- Download OUR [test data](https://disk.pku.edu.cn/link/AA103C5B00398E4E4089903CB06AC09D8C) or collect the test data by your own. The downloaded 'test_data' folder should be unziped under /ManipLLM/data_collection/data. Download [partnet mobility](https://sapien.ucsd.edu/downloads) urdf from its official website and place under /ManipLLM/data_collection/asset.
 
-The testing requires the server to has a least 40g memory. This command will first use the model to infer on all the test samples, and then interact with object in the simulator (SAPIEN).
+- The testing requires the server to has a least 40g memory. This command will first use the model to infer on all the test samples, and then interact with object in the simulator (SAPIEN).
   
   ```bash
   cd ./ManipLLM/test
