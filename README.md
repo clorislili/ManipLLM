@@ -60,7 +60,7 @@ Remember to add the checkpoints of [CLIP](https://disk.pku.edu.cn/link/AA93FF721
 
 Download the released [ManipLLM](todo) checkpoint or use your own trained checkpoint. Remember to change the line5 in test.sh accordingly to the dir you placed the ckpts.
 
-Download OUR [test data](https://disk.pku.edu.cn/link/AA103C5B00398E4E4089903CB06AC09D8C) or collect the test data by your own. The downloaded 'test_data' folder should be unziped under /ManipLLM/data_collection/data. Download [partnet mobility](https://sapien.ucsd.edu/downloads) urdf from its official website and place under ./ManipLLM/data_collection/asset.
+Download OUR [test data](https://disk.pku.edu.cn/link/AA103C5B00398E4E4089903CB06AC09D8C) or collect the test data by your own. The downloaded 'test_data' folder should be unziped under /ManipLLM/data_collection/data. Download [partnet mobility](https://sapien.ucsd.edu/downloads) urdf from its official website and place under /ManipLLM/data_collection/asset.
 
 The testing requires the server to has a least 40g memory. This command will first use the model to infer on all the test samples, and then interact with object in the simulator (SAPIEN).
   
