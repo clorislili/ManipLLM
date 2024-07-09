@@ -58,7 +58,7 @@ The public code only infers on the final prompt without chain-of-thought, predic
 
 Remember to add the checkpoints of [CLIP](https://disk.pku.edu.cn/link/AA93FF7210CF0D4F428850C0F520C81453), [LLaMa](same with the process in training), and [LLaMa-Adapter](https://disk.pku.edu.cn/link/AA682A19DB7FDA4028B112449D24BBC308) under /ManipLLM/test/ckpts as well.
 
-Place the released [ManipLLM](todo) checkpoint under /ManipLLM/train/exp or use your own trained checkpoint.
+Download the released [ManipLLM](todo) checkpoint or use your own trained checkpoint. Remember to change the line5 in test.sh accordingly to the dir you placed the ckpts.
 
 Download OUR [test data](https://disk.pku.edu.cn/link/AA103C5B00398E4E4089903CB06AC09D8C) or collect the test data by your own. The downloaded 'test_data' folder should be unziped under /ManipLLM/data_collection/data. Download [partnet mobility](https://sapien.ucsd.edu/downloads) urdf from its official website and place under ./ManipLLM/data_collection/asset.
 
